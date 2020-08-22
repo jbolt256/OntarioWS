@@ -1,0 +1,6 @@
+doctype html
+html
+	head
+		title Ontario Warehouse System
+	body
+		p Welcome to OntarioWS.

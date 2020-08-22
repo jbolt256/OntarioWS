@@ -1,0 +1,12 @@
+{
+	"authors": [
+		"Jacob A. Bolton"
+	],
+	"copyright": "Copyright © 2020, Jacob A. Bolton",
+	"dependencies": {
+		"vibe-d": "~>0.9.0"
+	},
+	"description": "Ontario warehousing application.",
+	"license": "proprietary",
+	"name": "ontariows"
+}
