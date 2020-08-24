@@ -3,7 +3,7 @@ html(lang='en')
   head
     title OntarioWS
   body
-    h1 Jade - node template engine
+    h1 OntarioWS
     form(action='/login', method='POST')
       | Username: 
       input(type='text', name='ws_username')

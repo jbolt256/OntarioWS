@@ -16,6 +16,7 @@ Session[string] valid_sessions;
 
 class Authenticate {
 	
+	/* Check authorization */
 	bool auth(string username, string password) {
 		if ( username == "admin" && password == "admin" ) {
 			return true;
@@ -23,6 +24,9 @@ class Authenticate {
 		return false;
 	}
 	
+	/* Create unique session ID. 
+	 * Does not check for collisions! Which is an issue even though there is only a 1 in 4.2 * 10^22 chance of a collision occurring. 
+	 */
 	string genSession() {
 		string generated = "";
 
@@ -37,6 +41,7 @@ class Authenticate {
 		return generated;
 	}
 	
+	/* Start a new session */
 	void startSession(string username, HTTPServerResponse res) {
 		// Store client side cookie for session
 		auto sessionID = this.genSession();
@@ -46,9 +51,18 @@ class Authenticate {
 		valid_sessions[sessionID] = newSession;		
 	}
 	
+	/* 
+	 * If session is valid (exists & non-expired), return true. 
+	 * If session is not valid & not expired, return false.
+	 * If session is not valid & expired, purge session and return false.
+	 */
 	static bool sessionIsValid(string sessionID) { 
-		if ( sessionID in valid_sessions && valid_sessions[sessionID].expiration >= (std.datetime.systime.Clock.currTime).toUnixTime() ) {
-			return true;
+		if ( sessionID in valid_sessions ) {
+			if ( valid_sessions[sessionID].expiration >= (std.datetime.systime.Clock.currTime).toUnixTime() ) {
+				return true;
+			} else {
+				valid_sessions.remove(sessionID);
+			}
 		} 
 		return false;
 	}

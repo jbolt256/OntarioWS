@@ -1,6 +1,10 @@
 doctype html
-html
-	head
-		title Ontario Warehouse System
-	body
-		p Welcome to OntarioWS.
+html(lang='en')
+  head
+    title OntarioWS - Admin
+  body
+    h1 OntarioWS Admin Controls
+    form(action='/go', method='POST')
+      input(type='text', name='ws_goto')
+      |  Goto:
+      input(type='submit', value='Go')

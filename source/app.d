@@ -16,6 +16,7 @@ void index(HTTPServerRequest req, HTTPServerResponse res)
 
 void admin(HTTPServerRequest req, HTTPServerResponse res)
 {
+	// Verify session is marked correctly
 	if ( req.cookies.get("WS_SESSION") != null && Authenticate.sessionIsValid(req.cookies.get("WS_SESSION")) ) {
 		res.render!("admin.dt", req);		
 	} else {
@@ -48,6 +49,7 @@ void main()
 	router.get("/", &index);
 	router.get("/admin", &admin);
 	router.post("/login", &login);
+	router.post("/go", &go);
 	
 	auto settings = new HTTPServerSettings;
 	settings.port = 8080;
