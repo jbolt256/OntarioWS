@@ -1,6 +1,12 @@
 doctype html
-html
-	head
-		title Ontario Warehouse System
-	body
-		p Welcome to OntarioWS.
+html(lang='en')
+  head
+    title OntarioWS
+  body
+    h1 Jade - node template engine
+    form(action='/login', method='POST')
+      | Username: 
+      input(type='text', name='ws_username')
+      |     Password: 
+      input(type='password', name='ws_password')
+      input(type='submit', value='Login')
