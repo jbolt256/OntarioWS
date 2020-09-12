@@ -49,7 +49,7 @@ void main()
 	router.get("/", &index);
 	router.get("/admin", &admin);
 	router.post("/login", &login);
-	router.post("/go", &go);
+	//router.post("/go", &go);
 	
 	auto settings = new HTTPServerSettings;
 	settings.port = 8080;
