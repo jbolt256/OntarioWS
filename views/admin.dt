@@ -8,3 +8,11 @@ html(lang='en')
       input(type='text', name='ws_goto')
       |  Goto:
       input(type='submit', value='Go')
+    form(action='/viewday', method='GET')
+      label(for='viewday') Select day:
+      select#viewday(name='viewday')
+        option(value='200911') September 11, 2020
+        option(value='200912') September 12, 2020
+      input(type='submit', value='View Day')
+
+        

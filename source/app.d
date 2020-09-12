@@ -3,7 +3,7 @@ module ontariows.main;
 import std.stdio;
 import vibe.vibe;
 import ontariows.auth;
-
+import ontariows.runs;
 
 /** OntarioWS - Ontario Warehouse System
  * Main entry point is here.
@@ -24,6 +24,10 @@ void admin(HTTPServerRequest req, HTTPServerResponse res)
 	}
 }
 
+void viewday(HTTPServerRequest req, HTTPServerResponse res) {
+	
+}
+
 void login(HTTPServerRequest req, HTTPServerResponse res)
 {
 	auto username = req.form.get("ws_username", "NotFound");
@@ -39,7 +43,6 @@ void login(HTTPServerRequest req, HTTPServerResponse res)
 	} else {
 		res.writeBody("Invalid login attempt.");
 	}
-	
 }
 
 void main()
@@ -49,6 +52,7 @@ void main()
 	router.get("/", &index);
 	router.get("/admin", &admin);
 	router.post("/login", &login);
+	router.get("/viewday", &viewday);
 	//router.post("/go", &go);
 	
 	auto settings = new HTTPServerSettings;
